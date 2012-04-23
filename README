@@ -1,0 +1,9 @@
+This is an arena allocator written in C. It reserves space in preallocated 
+chunks for small objects, while large allocations are handled one by one. 
+This gives minimal overhead while avoiding having to reserve a large memory
+area that will never be used. This allocator uses 16KB chunks and allocations
+smaller than 4KB are handed out from chunked memory.
+
+This project uses Unlicense licensing which is Public Domain with some 
+clarifications for jurisdictions where that isn't a well defined concept.
+See the UNLICENSE file.
