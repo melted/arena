@@ -52,7 +52,7 @@ void *arena_alloc(ahandle a, size_t s)
     void *mem;
     if(s < BLOB_MIN) {
         /* Allocate in a chunk */
-        size_t step = s>4?s:4;
+        size_t step;
         step += ALIGNMENT - (step % ALIGNMENT);
         if(a->chunks == NULL || a->chunks->size < step) {
             create_chunk(a);
