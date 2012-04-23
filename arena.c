@@ -12,6 +12,7 @@
 
 #define BLOB_MIN 4096
 #define CHUNK_SIZE 16384
+#define ALIGNMENT 4
 
 struct chunk {
     struct chunk *next;
@@ -52,9 +53,7 @@ void *arena_alloc(ahandle a, size_t s)
     if(s < BLOB_MIN) {
         /* Allocate in a chunk */
         size_t step = s>4?s:4;
-        if(step%4 != 0) {
-            step += 4 - (step%4);
-        }
+        step += ALIGNMENT - (step % ALIGNMENT);
         if(a->chunks == NULL || a->chunks->size < step) {
             create_chunk(a);
         }
