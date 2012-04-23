@@ -17,7 +17,7 @@ typedef struct arena *ahandle;
 
 ahandle arena_create(void);
 
-void *alloc(ahandle a, size_t s);
+void *arena_alloc(ahandle a, size_t s);
 
 void arena_destroy(ahandle a);
 
