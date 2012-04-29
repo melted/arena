@@ -35,6 +35,7 @@ ahandle arena_create(void)
     ahandle a = malloc(sizeof(struct arena));
     a->chunks = NULL;
     a->blobs = NULL;
+    return a;
 }
 
 static void create_chunk(ahandle a) 
